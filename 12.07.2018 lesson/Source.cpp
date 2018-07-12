@@ -277,7 +277,7 @@ start:
 		cin >> k;
 		cout << endl;
 
-		for (int p = 0; p < k; p++)
+		for (int p = 0; p < 2; p++)
 		{
 			for (i = 0; i < k; i++)
 			{
@@ -289,7 +289,6 @@ start:
 
 				cout << endl;
 			}
-			cout << endl;
 		}
 		
 
