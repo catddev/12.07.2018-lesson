@@ -208,7 +208,6 @@ start:
 		int b[n];
 		int i = 0, j = 0;
 		int move;
-		int direction;
 
 		for (i = 0; i < n; i++)
 		{
@@ -217,31 +216,20 @@ start:
 		}
 		cout << endl << endl;
 
-		cout << "выберите количество сдвигов: ";
+		cout << "выберите количество сдвигов (положительное число - сдвиг влево, отрицательное - сдвиг вправо): ";
 		cin >> move;
-	/*	cout << "выберите положение (1 - влево, 2 - вправо): ";
-		cin >> direction;
-
-		if (direction == 1)
-		{*/
-			for (i = 0, j=abs(n-move-i); i < n; i++, j++)
-			{
-				b[move + i] = a[i];
-
-				b[j] = a[i+move];
-			}
-
-			
-			for (i = 0; i < n; i++)
-				cout << a[i] << " ";
-		
-			cout << endl << endl;
-		/*}
-		else
+	
+		for (i = 0; i < n; i++)
 		{
+			if (i + move < n)
+				b[i] = a[abs(i + move)];
+			else
+				b[i] = a[abs(n - move - i)];
 
-		}*/
-
+			cout << b[i] << " ";
+		}
+		
+		cout << endl << endl;
 	}
 	break;
 	case 7: // the same as previous
@@ -270,29 +258,45 @@ start:
 	break;
 	case 8:
 	{
-		const int n = 10;
+		const int n = 20;
 		int a[n][n];
 
-		int i, j, p, k;
+		int i, j, k;
+		cout << "введите желаемый параметр (сторону) квадрата для заполнения числами: ";
 		cin >> k;
 		cout << endl;
 
-		for (int p = 0; p < 2; p++)
+		for (i = 0; i < k / 2; i++)
 		{
-			for (i = 0; i < k; i++)
+			for (j = 0; j < k / 2; j++)
 			{
-				for (j = 0; j < k; j++)
-				{
-					a[i][j] = i + 1;
-					cout << a[i][j] << " ";
-				}
-
-				cout << endl;
+				a[i][j] = 1;
+				cout << a[i][j] << " ";
 			}
+			
+			for (j = k / 2; j < k; j++)
+			{
+				a[i][j] = 2;
+				cout << a[i][j] << " ";
+			}
+			cout << endl;
 		}
-		
+		for (i = k/2; i < k; i++)
+		{
+			for (j = 0; j < k / 2; j++)
+			{
+				a[i][j] = 3;
+				cout << a[i][j] << " ";
+			}
 
-		
+			for (j = k / 2; j < k; j++)
+			{
+				a[i][j] = 4;
+				cout << a[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl << endl;
 	}
 	break;
 	case 9:
