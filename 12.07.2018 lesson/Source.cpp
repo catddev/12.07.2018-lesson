@@ -277,9 +277,50 @@ start:
 		cout << endl << endl;
 	}
 	break;
-	case 9:
+	case 9: // отсортировать весь двухмерный массив, не просто построчно
 	{
+		int a[100][100];
+		const int n = 5;
+		int i, j;
+		/*int b[n*n];*/
 
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				a[i][j] = rand() % 50;
+				cout << left << setw(3) << a[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl << endl;
+
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				for (int pass = 0; pass < n - 1; pass++)
+				{
+					if (a[i][pass] > a[i][pass + 1])
+						swap(a[i][pass], a[i][pass + 1]);
+
+					if (a[i][pass] < a[i - 1][n - 1])
+					{
+						swap(a[i][pass], a[i - 1][n - 1]);
+						i--;
+					}
+				}
+			}
+		}
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				cout << left << setw(3) << a[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl << endl;
 	}
 	break;
 	case 10:
